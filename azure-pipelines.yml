@@ -7,9 +7,9 @@ pool:
 
 steps:
 - script: |
-    whoami
-  displayName: 'Check identity'
-  
+    hostname
+  displayName: 'Display Hostname'
+
 - script: |
     whoami
     python -m venv venv
