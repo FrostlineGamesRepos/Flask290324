@@ -9,13 +9,15 @@ steps:
     python -m venv venv
     source venv/bin/activate
     pip install -r requirements.txt
-    pip install pytest  # Add this line to install pytest
+    pip install pytest
   displayName: 'Install dependencies'
 
 - script: |
+    source venv/bin/activate
     python -m pytest tests/
   displayName: 'Run tests'
 
 - script: |
+    source venv/bin/activate
     python app.py
   displayName: 'Run Flask App'
