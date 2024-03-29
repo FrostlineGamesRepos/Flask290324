@@ -1,3 +1,4 @@
+
 trigger:
 - main  # or the branch you want to trigger on
 
@@ -6,6 +7,7 @@ pool:
 
 steps:
 - script: |
+    whoami
     python -m venv venv
     venv\Scripts\activate
     pip install -r requirements.txt
