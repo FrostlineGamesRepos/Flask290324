@@ -2,16 +2,16 @@ trigger:
 - main  # or the branch you want to trigger on
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: 'Default'  # Specify the label of your self-hosted Windows agent
 
 steps:
 - script: |
     python -m venv venv
-    source venv/bin/activate
+    venv\Scripts\activate
     pip install -r requirements.txt
   displayName: 'Install dependencies'
 
 - script: |
-    source venv/bin/activate
+    venv\Scripts\activate
     python app.py
   displayName: 'Run Flask App'
