@@ -11,10 +11,9 @@ steps:
   displayName: 'Display Hostname'
 
 - script: |
-    whoami
     python -m venv venv
     venv\Scripts\activate
-    pip install -r requirements.txt
+    C:\Users\frost\AppData\Local\Programs\Python\Python312\Lib\site-packages\pip install -r requirements.txt
   displayName: 'Install dependencies'
 
 - script: |
