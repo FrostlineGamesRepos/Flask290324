@@ -11,7 +11,7 @@ steps:
   displayName: 'Display Hostname'
 
 - script: |
-    python -m venv venv
+    C:\Users\frost\AppData\Local\Programs\Python\Python312 -m venv venv
     venv\Scripts\activate
     C:\Users\frost\AppData\Local\Programs\Python\Python312\Lib\site-packages\pip install -r requirements.txt
   displayName: 'Install dependencies'
