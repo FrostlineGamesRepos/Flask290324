@@ -20,5 +20,5 @@ steps:
 
 - script: |
     # Commands to run the Docker container
-    docker run -d -p 8080:$5000 frostlinegamesdocker/flaskapp:$(Build.BuildId)
+    docker run -d -p 8080:5000 frostlinegamesdocker/flaskapp:$(Build.BuildId)
   displayName: 'Run Docker Container'
