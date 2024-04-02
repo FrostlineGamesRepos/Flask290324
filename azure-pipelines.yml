@@ -12,14 +12,9 @@ steps:
     sudo usermod -aG docker $USER
   displayName: 'Build Flask App'
 
-- task: Docker@2
-  inputs:
-    containerRegistry: 'FrostlineDevopsDockerHub'
-    repository: 'frostlinegamesdocker/flaskapp'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
-    tags: |
-      $(Build.BuildId)
+- script: |
+    sudo docker build -t frostlinegamesdocker/flaskapp:$(Build.BuildId) .
+    sudo docker push frostlinegamesdocker/flaskapp:$(Build.BuildId)
   displayName: 'Dockerize and Push'
 
 - script: |
