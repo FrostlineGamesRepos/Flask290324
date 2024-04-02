@@ -1,17 +1,6 @@
 trigger:
 - main
 
-parameters:
-- name: DockerHubRepository
-  type: string
-  default: 'frostlinegamesdocker/flaskapp'  # Default value for Docker Hub repository
-- name: HostPort
-  type: number
-  default: 8080  # Default value for host port
-- name: ContainerPort
-  type: number
-  default: 5000  # Default value for container port
-
 steps:
 - script: |
     # Commands to build the Flask app
