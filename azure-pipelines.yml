@@ -12,7 +12,7 @@ steps:
   displayName: 'Build Flask App'
 
 - script: |
-    docker build -t frostlinegamesdocker/flaskapp:$(Build.BuildId) .
+    sudo docker build -t frostlinegamesdocker/flaskapp:$(Build.BuildId) .
     docker push frostlinegamesdocker/flaskapp:$(Build.BuildId)
   displayName: 'Dockerize and Push'
 
