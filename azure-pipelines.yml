@@ -22,7 +22,7 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'FrostlineDevopsDockerHub'
-    repository: '$(DockerHubRepository)'
+    repository: 'frostlinegamesdocker/flaskapp'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     tags: |
@@ -31,5 +31,5 @@ steps:
 
 - script: |
     # Commands to run the Docker container
-    docker run -d -p $(HostPort):$(ContainerPort) $(DockerHubRepository):$(Build.BuildId)
+    docker run -d -p 8080:$5000 frostlinegamesdocker/flaskapp:$(Build.BuildId)
   displayName: 'Run Docker Container'
