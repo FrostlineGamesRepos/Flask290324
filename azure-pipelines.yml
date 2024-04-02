@@ -1,6 +1,9 @@
 trigger:
 - main
 
+pool:
+  agent: Default
+
 steps:
 - script: |
     # Commands to build the Flask app
