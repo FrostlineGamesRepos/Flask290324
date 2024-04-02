@@ -8,8 +8,7 @@ steps:
 - script: |
     # Commands to build the Flask app
     cd $(Build.SourcesDirectory)
-    # Build your Flask app here
-    sudo usermod -aG docker $USER
+
   displayName: 'Build Flask App'
 
 - script: |
