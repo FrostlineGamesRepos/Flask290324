@@ -1,13 +1,7 @@
 trigger:
 - main
 
-pool:
-  agent: default
-
 parameters:
-- name: DockerHubServiceConnection
-  type: string
-  default: 'FrostlineDevopsDockerHub'  # Default value for Docker Hub service connection
 - name: DockerHubRepository
   type: string
   default: 'frostlinegamesdocker/flaskapp'  # Default value for Docker Hub repository
@@ -27,7 +21,7 @@ steps:
 
 - task: Docker@2
   inputs:
-    containerRegistry: '$(DockerHubServiceConnection)'
+    containerRegistry: 'FrostlineDevopsDockerHub'
     repository: '$(DockerHubRepository)'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
