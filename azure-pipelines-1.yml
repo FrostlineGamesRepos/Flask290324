@@ -1,0 +1,41 @@
+trigger:
+- main
+
+pool:
+  agent: default
+
+parameters:
+- name: DockerHubServiceConnection
+  type: string
+  default: 'FrostlineDevopsDockerHub'  # Default value for Docker Hub service connection
+- name: DockerHubRepository
+  type: string
+  default: 'frostlinegamesdocker/flaskapp'  # Default value for Docker Hub repository
+- name: HostPort
+  type: number
+  default: 8080  # Default value for host port
+- name: ContainerPort
+  type: number
+  default: 5000  # Default value for container port
+
+steps:
+- script: |
+    # Commands to build the Flask app
+    cd $(Build.SourcesDirectory)
+    # Build your Flask app here
+  displayName: 'Build Flask App'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: '$(DockerHubServiceConnection)'
+    repository: '$(DockerHubRepository)'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    tags: |
+      $(Build.BuildId)
+  displayName: 'Dockerize and Push'
+
+- script: |
+    # Commands to run the Docker container
+    docker run -d -p $(HostPort):$(ContainerPort) $(DockerHubRepository):$(Build.BuildId)
+  displayName: 'Run Docker Container'
